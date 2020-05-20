@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_181644) do
+ActiveRecord::Schema.define(version: 2020_05_20_195754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,12 +18,14 @@ ActiveRecord::Schema.define(version: 2020_05_20_181644) do
   create_table "bookings", force: :cascade do |t|
     t.time "time"
     t.date "date"
-    t.bigint "user_id"
     t.bigint "haircut_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "client_name"
+    t.string "phone_number"
+    t.string "client_email"
+    t.text "message"
     t.index ["haircut_id"], name: "index_bookings_on_haircut_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "haircuts", force: :cascade do |t|
@@ -49,6 +51,5 @@ ActiveRecord::Schema.define(version: 2020_05_20_181644) do
   end
 
   add_foreign_key "bookings", "haircuts"
-  add_foreign_key "bookings", "users"
   add_foreign_key "haircuts", "users"
 end
