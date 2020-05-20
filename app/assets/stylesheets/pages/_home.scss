@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.home-banners{
+  display: flex;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+.home-banner-photo{
+  padding: 10px;
+  width: 50%;
+  height: 100vh;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: 0.2s;
+
+}
+
+.home-text{
+  color: #7d5a5a;
+  position: absolute;
+  top: 40%;
+  left: 36%;
+  h1{
+    font-family: 'Bangers', cursive;
+    font-size: 84px;
+    text-shadow: 2px 2px black;
+  }
+}
+.haircut-home-banner{
+  padding: 20px;
+  width: 60%;
+  filter: grayscale(100%);
+  transition: 0.2s;
+  &:hover{
+    filter: grayscale(0%)
+  }
+}
+.haircut-service{
+  padding: 20px;
+  width: 40%;
+  h4{
+    font-family: 'Bangers', cursive;
+  }
+}
+
+

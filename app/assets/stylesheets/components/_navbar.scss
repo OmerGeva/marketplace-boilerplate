@@ -1,6 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: white opacity;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+}
+.navbar-link{
+  color: rgba(20,20,20,1);
+  padding: 8px;
+  font-family: 'Bangers', cursive;
+  font-size: 20px;
+  a{
+    text-decoration: none;
+    color: #323232;
+    padding-bottom: 4px;
+  }
+  &:hover{
+    background-color: rgba(200,200,200, 0.3);
+    text-decoration:none;
+    color: #323232;
+    border-bottom: 2px solid #323232;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
