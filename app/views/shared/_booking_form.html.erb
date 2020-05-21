@@ -9,6 +9,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for Booking.new do |f|%>
+          <%= f.input :haircut, collection: Haircut::HAIRCUT_TYPES %>
           <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
           <%= f.input :time, as: :string, required: false, input_html: {class: "timepicker"} %>
           <%= f.input :client_name, label: false, placeholder: 'Name' %>
