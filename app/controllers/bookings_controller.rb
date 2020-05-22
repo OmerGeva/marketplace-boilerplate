@@ -8,6 +8,10 @@ class BookingsController < ApplicationController
     haircut = Haircut.find_by(title: params[:booking][:haircut])
     booking.haircut = haircut
 
+    Booking.all.select do |checked_booking|
+      checked_booking.date == booking.date
+    end
+
     if booking.save
       redirect_to root_path
     else
