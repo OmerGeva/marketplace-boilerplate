@@ -1,0 +1,4 @@
+
+
+document.execCommand("copy");
+

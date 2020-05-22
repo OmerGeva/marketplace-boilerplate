@@ -3,14 +3,57 @@
   <div class="row d-flex justify-content-center">
     <div class="col-8">
       <%= month_calendar do |date| %>
-        <% @bookings.each do |booking| %>
           <%= date.strftime("%d") %>
-          <p><%= booking.haircut.title if booking.date == date %></p>
+        <% @bookings.each do |booking| %>
+          <div class="scheduled-booking">
+            <% if booking.date == date %>
+            <p class="calender-modal-button" data-toggle="modal" data-target="#haircut-modal-<%= booking.id %>"><%= booking.haircut.title%></p>
+            <% end %>
+          </div>
         <% end %>
-        <%=  %>
       <% end %>
     </div>
   </div>
 </div>
 
 
+<% @bookings.each do |booking| %>
+  <div class="modal fade" id="haircut-modal-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"><%= booking.haircut.title %></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-around p-2">
+            <div class='date-time-schedule-page'>
+              <i class="far fa-calendar-alt"></i>
+              <p><%= booking.date.strftime("%d of %B, %Y") %></p>
+            </div>
+            <div class='date-time-schedule-page'>
+              <i class="far fa-clock"></i>
+              <p><%= booking.time.strftime("%I:%M %p")  %></p>
+            </div>
+          </div>
+          <div class="border p-3">
+            <p><%= booking.client_name %></p>
+            <div class="d-flex justify-content-between">
+              <p><%= booking.phone_number %></p>
+            </div>
+            <p><a href="mailto:<%= booking.client_email %>"><%= booking.client_email %></a> </p>
+          </div>
+          <div class="border p-3">
+            <p><%= booking.message if booking.message%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :after_js do %>
+  <%= javascript_pack_tag 'copy_link' %>
+<% end %>

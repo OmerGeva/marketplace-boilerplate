@@ -10,6 +10,9 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item" data-toggle="modal" data-target="#exampleModal">
+        <%= link_to "Home", "/", class: "navbar-link" %>
+      </li>
         <li class="nav-item" data-toggle="modal" data-target="#exampleModal">
           <%= link_to "Schedule", "#", class: "navbar-link" %>
         </li>
@@ -19,11 +22,10 @@
         <li class="nav-item">
           <%= link_to "About", "#", class: "navbar-link" %>
         </li>
-
         <% if current_user %>
           <li class="nav-item">
             <%= link_to 'My Schedule', bookings_path, class: 'navbar-link'  %>
-            <%= link_to "Log Out", destroy_user_session_path, class: 'navbar-link' %>
+            <%= link_to "Log Out", destroy_user_session_path, method: :DELETE, class: 'navbar-link' %>
           </li>
         <% else %>
           <li class="nav-item">
