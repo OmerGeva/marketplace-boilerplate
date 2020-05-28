@@ -16,7 +16,6 @@
   </div>
 </div>
 
-
 <% @bookings.each do |booking| %>
   <div class="modal fade" id="haircut-modal-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -41,7 +40,10 @@
           <div class="border p-3">
             <p><%= booking.client_name %></p>
             <div class="d-flex justify-content-between">
-              <p><%= booking.phone_number %></p>
+              <p id='phone-number'><%= booking.phone_number %></p>
+              <button class="copy-btn" class="btn btn-light" data-clipboard-text="<%= booking.phone_number %>">
+                  <i class="far fa-clipboard"></i>
+              </button>
             </div>
             <p><a href="mailto:<%= booking.client_email %>"><%= booking.client_email %></a> </p>
           </div>
@@ -53,7 +55,4 @@
     </div>
   </div>
 <% end %>
-
-<%= content_for :after_js do %>
-  <%= javascript_pack_tag 'copy_link' %>
-<% end %>
+<span id="form-place-holder"></span>
