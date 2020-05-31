@@ -22,6 +22,8 @@
         <% if current_user %>
           <li class="nav-item">
             <%= link_to 'My Schedule', bookings_path, class: 'navbar-link'  %>
+          </li>
+          <li>
             <%= link_to "Log Out", destroy_user_session_path, method: :DELETE, class: 'navbar-link' %>
           </li>
         <% else %>
