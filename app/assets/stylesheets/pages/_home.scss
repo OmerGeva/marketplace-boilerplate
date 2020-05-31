@@ -14,8 +14,8 @@
   object-fit: cover;
   filter: grayscale(100%);
   transition: 0.2s;
-
 }
+
 
 .services{
   h4{
@@ -52,7 +52,18 @@
 .fa-cut{
   font-size: 56px;
 }
+#booking-data{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin-bottom: 35px;
 
+}
+
+.time-label{
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
 .schedule-on-home{
   font-size: 16px;
   padding: 8px;
@@ -95,5 +106,70 @@
     img{
       width: 95%;
     }
+
+
+.hour-select-wrapper{
+text-align: center;
+  input {
+    display: none;
+  }
+  label {
+  min-width: 92px;
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid #666;
+  border-radius: 7px;
+}
+  label span {
+  position: relative;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+label span:before,
+label span:after {
+  content: '';
+}
+label:before,
+label:after {
+  content: '';
+}
+
+label:before {
+}
+
+label:after {
+  background: #00C4A6
+}
+label span:before {
+  // border: 1px solid #222021;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+label span:after {
+  background: #00C4A6;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  transition: 300ms;
+  opacity: 0;
+  // border: 1px solid rgba(40,40,40,0.2);
+}
+label input:checked+span:after {
+  opacity: 1;
+}
+
+}
+@media(max-width: 480px) {
+  #booking-data{
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
