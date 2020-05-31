@@ -18,3 +18,12 @@ html, body {
   color: white;
   padding: 8px;
 }
+@media only screen and (max-width: 768px) {
+  .footer{
+  height: 100px;
+    p{
+      padding: 0 10px;
+      margin: 0px;
+    }
+  }
+}

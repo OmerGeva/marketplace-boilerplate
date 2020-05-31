@@ -1,58 +1,77 @@
-<div class="container text-center p-5">
-  <h3>My Schedule</h3>
-  <div class="row d-flex justify-content-center">
-    <div class="col-8">
-      <%= month_calendar do |date| %>
-          <%= date.strftime("%d") %>
+<div class="desktop-show">
+  <div class="container text-center p-5">
+    <h3>My Schedule</h3>
+    <div class="row d-flex justify-content-center">
+      <div class="col-8">
+        <%= month_calendar do |date| %>
+        <%= date.strftime("%d") %>
         <% @bookings.each do |booking| %>
-          <div class="scheduled-booking">
-            <% if booking.date == date %>
-            <p class="calender-modal-button" data-toggle="modal" data-target="#haircut-modal-<%= booking.id %>"><%= booking.haircut.title%></p>
-            <% end %>
-          </div>
+        <div class="scheduled-booking">
+          <% if booking.date == date %>
+          <p class="calender-modal-button" data-toggle="modal" data-target="#haircut-modal-<%= booking.id %>"><%= booking.haircut.title%></p>
+          <% end %>
+        </div>
         <% end %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+  </div>
+</div>
+<div class="mobile-show">
+  <div class="mobile-container text-center pt-5">
+    <h3>My Schedule</h3>
+      <div class="col-8">
+        <%= month_calendar do |date| %>
+        <%= date.strftime("%d") %>
+        <% @bookings.each do |booking| %>
+        <div class="scheduled-booking">
+          <% if booking.date == date %>
+          <p class="calender-modal-button" data-toggle="modal" data-target="#haircut-modal-<%= booking.id %>"><%= booking.haircut.title%></p>
+          <% end %>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
   </div>
 </div>
 
 <% @bookings.each do |booking| %>
-  <div class="modal fade" id="haircut-modal-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle"><%= booking.haircut.title %></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+<div class="modal fade" id="haircut-modal-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><%= booking.haircut.title %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-around p-2">
+          <div class='date-time-schedule-page'>
+            <i class="far fa-calendar-alt"></i>
+            <p><%= booking.date.strftime("%d of %B, %Y") %></p>
+          </div>
+          <div class='date-time-schedule-page'>
+            <i class="far fa-clock"></i>
+            <p><%= booking.time.strftime("%I:%M %p")  %></p>
+          </div>
         </div>
-        <div class="modal-body">
-          <div class="d-flex justify-content-around p-2">
-            <div class='date-time-schedule-page'>
-              <i class="far fa-calendar-alt"></i>
-              <p><%= booking.date.strftime("%d of %B, %Y") %></p>
-            </div>
-            <div class='date-time-schedule-page'>
-              <i class="far fa-clock"></i>
-              <p><%= booking.time.strftime("%I:%M %p")  %></p>
-            </div>
+        <div class="border p-3">
+          <p><%= booking.client_name %></p>
+          <div class="d-flex justify-content-between">
+            <p id='phone-number'><%= booking.phone_number %></p>
+            <button class="copy-btn" class="btn btn-light" data-clipboard-text="<%= booking.phone_number %>">
+              <i class="far fa-clipboard"></i>
+            </button>
           </div>
-          <div class="border p-3">
-            <p><%= booking.client_name %></p>
-            <div class="d-flex justify-content-between">
-              <p id='phone-number'><%= booking.phone_number %></p>
-              <button class="copy-btn" class="btn btn-light" data-clipboard-text="<%= booking.phone_number %>">
-                  <i class="far fa-clipboard"></i>
-              </button>
-            </div>
-            <p><a href="mailto:<%= booking.client_email %>"><%= booking.client_email %></a> </p>
-          </div>
-          <div class="border p-3">
-            <p><%= booking.message if booking.message%></p>
-          </div>
+          <p><a href="mailto:<%= booking.client_email %>"><%= booking.client_email %></a> </p>
+        </div>
+        <div class="border p-3">
+          <p><%= booking.message if booking.message%></p>
         </div>
       </div>
     </div>
   </div>
+</div>
 <% end %>
 <span id="form-place-holder"></span>

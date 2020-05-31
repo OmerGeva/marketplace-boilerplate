@@ -24,9 +24,23 @@
     border-bottom: 2px solid #323232;
   }
 }
+.navbar-expand-sm{
+  a{
+    color: white;
+    text-shadow:
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+  }
+}
+.navbar-toggler-icon{
 
+  color: white;
+}
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+
 }
 
 .navbar-lewagon .navbar-brand img {
