@@ -19,6 +19,11 @@ class BookingsController < ApplicationController
     end
   end
 
+  def contact
+    @user = User.first
+  end
+
+
   private
   def booking_params
     params.require(:booking).permit(:client_name, :client_email, :phone_number, :message,:date, :time)
